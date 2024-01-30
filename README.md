@@ -12,4 +12,5 @@ The following image shows the java script written to add to the functionality of
 <img width="1440" alt="Screenshot 2024-01-30 at 5 19 40 PM" src="https://github.com/Tripti1298/iit_indore_timetable/assets/142665340/fa9f8bc0-55bd-4c3a-8797-745cc72f5b4a">
 
 INSTRUCTIONS
-1: just run the web page .
+1: When you open the web page the option to select a departmnt will be shown.Juat select one and press show schedule.
+2:You will be shown the required schedule accordingly.
