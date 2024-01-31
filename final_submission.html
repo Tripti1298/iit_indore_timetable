@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Schedule</title>
+    <style>
+        body {
+            background-image: url('http://library.iiti.ac.in/wp-content/uploads/2020/09/LRC_15-4.jpg'); /* Replace 'your-background-image.jpg' with the path to your image file */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        td, th {
+            border: 1px solid #deb614;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            -webkit-text-fill-color: rgb(23, 22, 1);
+        }
+        h1 {
+            font-size: 40px; /* Adjust the font size as needed */
+            color: #000001; /* Change the color as needed */
+        }
+        h2 {
+            font-size: 36px; /* Adjust the font size as needed */
+            color: #1f038d; /* Change the color as needed */
+        }
+        tr:nth-child(2) {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>IIT INDORE</h1>
+    <h1>Welcomes you</h1>
+    <br><br><br><br><br><br><br><br>
+    <h2>Select a department:</h2>
+    <select id="codeSelector">
+        <!-- Add options for the departments -->
+        <option value="" disabled selected>Select a department</option>
+        <option value="CSE">Computer Science and Engineering (CSE)</option>
+        <option value="EE">Electrical Engineering (EE)</option>
+        <option value="CE">Civil Engineering (CE)</option>
+        <option value="ME">Mechanical Engineering (ME)</option>
+        <option value="MEMS">Mechanical Engineering with Materials Science (MEMS)</option>
+        
+    </select>
+    <br><br>
+    <button onclick="executeCode()">Show Schedule</button>
+
+    <div id="output"></div>
+    <div id="timetableContainer"></div>
+
+    <script>
+        function executeCode() {
+            var codeSelector = document.getElementById("codeSelector");
+            var selectedOption = codeSelector.value;
+            var outputElement = document.getElementById("output");
+
+            switch (selectedOption) {
+                case "CSE":
+                    outputElement.innerHTML = "Today's or Tomorrow's Timetable for Computer Science and Engineering (CSE)";
+                    displayTimetable([
+                    //  Define timetable for CSE   
+                    ["Day", "8:30-9:30", "9:30-10:30", "10:30-11:30", "11:30-12:30", "12:30-1:30", "1:30-2:30", "2:30-3:30", "3:30-4:30", "4:30-5:30", "5:30-6:30"],
+                        ["MONDAY", "L-CS-204", "L-CS-206", " ", "L-CS-202", "LUNCH BREAK", " ", "P-MA-205", "P-MA-205", "P-MA-205", " "],
+                        ["TUESDAY", "", "L-CS-204", " L-HS-117", "L-CS-204", "LUNCH BREAK", "", "L-CS-202", "L-HS 302/ES 302", "", "L-CS-208"],
+                        ["WEDNESDAY", "L-CS-204", "L-HS 302/ES 302", "L-CS-204", "L-CS-204", "LUNCH BREAK", "L-CS-206", "P-CS-254", "P-CS-254", "", ""],
+                        ["THURSDAY", "L-HS-302", "L-MA-204", "L-CS-206", " ", "LUNCH BREAK", "", "L-CS-202", "L-CS-204", "", ""],
+                        ["FRIDAY", "L-CS-204", "L-CS-204", "L-CS-204", "L-CS-204", "LUNCH BREAK", "L-CS-204", "L-CS-204", "L-CS-204", "L-CS-204", "L-CS-204"],
+                        ["SATURDAY", "L-CS-204", "L-CS-204", "L-CS-204", "L-CS-204", "LUNCH BREAK", "L-CS-204", "L-CS-204", "L-CS-204", "L-CS-204", "L-CS-204"]
+                        
+                    ]);
+                    break;
+
+                case "EE":
+                    outputElement.innerHTML = "Today's or Tomorrow's Timetable for Electrical Engineering (EE)";
+                    displayTimetable([
+                        // Define timetable for EE
+                        ["Day", "8:30-9:30","9:30-10:30", "10:30-11:30", "11:30-12:30","12:30-1:30","1:30-2:30", "2:30-3:30","3:30-4:30","4:30-5:30","5:30-6:30"],
+                        ["MONDAY", "L-EE-204", "L-EE-206", "L-EE-202", "  ", "LUNCH BREAK","","L-MA 254"," "," "," "],
+                        ["TUESDAY", "L-EE-204", "", "L-EE-202", "  ", "LUNCH BREAK","P-EE 256/EE 258","P-EE 256/EE 258"," P-EE 256/EE 258"," "," "],
+                        ["WEDNESDAY", "L-EE-206", "L-EE-204", "L-HS-312", "  ", "LUNCH BREAK","L-MA 204",""," "," "," "],
+                        ["THURSDAY"," ", "L-EE-206", "L-CS-202", "  ", "LUNCH BREAK","P-EE-204","P-EE-204"," "," "," "],
+                        ["FRIDAY", " ", "", "L-EE-202", "  ", "LUNCH BREAK","P-EE-204","P-EE-204"," "," "," "],
+                        ["SATURDAY","", "L-EE-206", "", "  ", "LUNCH BREAK","P-EE-204","P-EE-204"," "," ",""," "]
+                    ]);
+                    break;
+                    case "CE":
+                    outputElement.innerHTML = "Timetable for Civil Engineering (CE)";
+                    displayTimetable([
+                        //  Define timetable for CE 
+                        ["Day", "8:30-9:30","9:30-10:30", "10:30-11:30", "11:30-12:30","12:30-1:30","1:30-2:30", "2:30-3:30","3:30-4:30","4:30-5:30","5:30-6:30"],
+                        ["MONDAY", "", "L: CE 202", "", "L-CE-204", "LUNCH BREAK","","L: AA 204","P : MA 204CE","P : MA 204CE",""],
+                        ["TUESDAY", "T:CE:202", "T-MA 254", "T:CE:204", "T:CE:206", "LUNCH BREAK","T: AA 204","","","",""],
+                        ["WEDNESDAY", "L:CE:202", "L:CE:204", "L:CE:206", "", "LUNCH BREAK","","P: CE 254 (CE1) (2 hr.) P: CE 256 (CE2) (3 hr.)","P: CE 254 (CE1) (2 hr.)P: CE 256 (CE2) (3 hr.)","P: CE 254 (CE1) (2 hr.)P: CE 256 (CE2) (3 hr.)",""],
+                        ["THURSDAY", "", "", "L:CE:204", "L:CE:206", "LUNCH BREAK","L: AA 204","P: CE 254 (CE2) (2 hr.)P: CE 256 (CE1) (3 hr.)","P: CE 254 (CE2) (2 hr.)P: CE 256 (CE1) (3 hr.)","P: CE 254 (CE2) (2 hr.)P: CE 256 (CE1) (3 hr.)",""],
+                        ["FRIDAY", "L:CE:202", "L:CE:204", "L:CE:206", "", "LUNCH BREAK","L:CE:202","L:CE:202","L:CE:202","L:CE:202","L:CE:202"],
+                        ["SATURDAY", "", "", "", "L-MA 254", "LUNCH BREAK","L:CE:202","","","",""]
+                        
+                        
+                    ]);
+                    break;
+                    case "ME":
+                    outputElement.innerHTML = "Timetable for Mechanical Engineering (ME)";
+                    displayTimetable([
+                        //  Define timetable for ME 
+                    ["Day", "8:30-9:30","9:30-10:30", "10:30-11:30", "11:30-12:30","12:30-1:30","1:30-2:30", "2:30-3:30","3:30-4:30","4:30-5:30","5:30-6:30"],
+                       ["MONDAY", "L:ME:206", "L:ME:202", "", "L:ME:204", "LUNCH BREAK","","L:HS:213","","",""],
+                       ["TUESDAY", "", "L:ME:206", "L:ME:202", "L:ME:208", "LUNCH BREAK","","P: ME 258 (M3)","P: ME 258 (M3)","P: ME 258 (M3)",""],
+                       ["WEDNESDAY", "", "", "L:ME:204", "L:ME:206", "LUNCH BREAK","L:ME:202","P: ME 254 (M2)","P: ME 254 (M2)","P: ME 254 (M2)"," "],
+                       ["THURSDAY", "T:ME:202", " ", "T:ME:206", "T:ME:204", "LUNCH BREAK","","P: ME 352 (M2) P: ME 354 (M1)"," P: ME 352 (M2) P: ME 354 (M1)"," P: ME 352 (M2) P: ME 354 (M1)"," "],
+                       ["FRIDAY", "", "L:ME:204", "L:ME:208", "", "LUNCH BREAK","L:ME:206","L:ME:206","L:ME:206","L:ME:206","L:ME:206"],
+                       ["SATURDAY", "L: HS 302/ ES 302", "", "", "", "LUNCH BREAK","","","","",""]
+                      
+                        
+                    ]);
+                    break;
+                    case "MEMS":
+                    outputElement.innerHTML = "Mechanical Engineering and Material Science (MEMS)";
+                    displayTimetable([
+                        //  Define timetable for MEMS
+                        ["Day", "8:30-9:30","9:30-10:30", "10:30-11:30", "11:30-12:30","12:30-1:30","1:30-2:30", "2:30-3:30","3:30-4:30","4:30-5:30","5:30-6:30"],
+                        ["MONDAY", "", "", "L:MM:202", "L:MM:204", "LUNCH BREAK","L:MM:208","","","",""],
+                        ["TUESDAY", "", "", "", "", "LUNCH BREAK","","L:MM:206","L:MM:202","",""],
+                        ["WEDNESDAY", "", "", "L:MM:208", "L:MM:202", "LUNCH BREAK","","P: CE 310 (CE1) P: CE 354 (CE2)","P: CE 310 (CE1) P: CE 354 (CE2)","",""],
+                        ["THURSDAY", "", "", "L:MM:206", "L:MM:204", "LUNCH BREAK","","","","",""],
+                        ["FRIDAY", "", "T: MM 202", "T: MM 204", "T: MM 206", "LUNCH BREAK","","P: CE 352 (CE2) P: CE 358 (CE1)","P: CE 352 (CE2) P: CE 358 (CE1)","P: CE 352 (CE2) P: CE 358 (CE1)",""],
+                        ["SATURDAY", "L: HS 302/ ES 302", "", "", "", "LUNCH BREAK","","","","",""]
+                        
+                    ]);
+                    break;
+
+                
+                default:
+                    outputElement.innerHTML = "Invalid option selected.";
+            }
+        }
+
+        function displayTimetable(timetableData) {
+            const timetableContainer = document.getElementById('timetableContainer');
+            timetableContainer.innerHTML = ""; // Clear previous timetable if any
+
+            if (timetableData.length === 0) {
+                timetableContainer.innerHTML = "No timetable available.";
+                return;
+            }
+
+            const currentDayIndex = new Date().getDay(); // Get the current day (0 for Sunday, 1 for Monday, etc.)
+            const currentTime = new Date().getHours(); // Get the current hour
+
+            const table = document.createElement('table');
+            table.classList.add('timetable'); // Add a class for styling
+
+            timetableData.forEach((rowData, rowIndex) => {
+                if (rowIndex === 0 || (rowIndex === currentDayIndex  && currentTime < 18)) {
+                    const row = document.createElement('tr');
+
+                    rowData.forEach((cellData, columnIndex) => {
+                        const cell = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        cell.textContent = cellData;
+                        row.appendChild(cell);
+                    });
+
+                    table.appendChild(row);
+                } else if (rowIndex === currentDayIndex + 1 && currentTime >= 18) {
+                    // Display tomorrow's timetable if it's after 6 PM
+                    const row = document.createElement('tr');
+
+                    rowData.forEach((cellData, columnIndex) => {
+                        const cell = document.createElement(rowIndex === 0 ? 'th' : 'td');
+                        cell.textContent = cellData;
+                        row.appendChild(cell);
+                    });
+
+                    table.appendChild(row);
+                }
+            });
+
+            timetableContainer.appendChild(table);
+        }
+    </script>
+</body>
+</html>
